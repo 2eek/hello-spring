@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>3Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p>Hello33</p>
+
+<p>컨트롤러 안거친다.정적컨텐츠 (thymleaf 템플릿 엔진 사용 안함) 서버에서 그대로 클라이언트로 전달되어 브라우저에서 해석 및 렌더링됨 </p>
+<p>1. <a href="/hello-static.html" ><code>localhost:8080/hello-static.html</code></a> 입력하면 컨트롤러 안거치고 정적인 파일 랜더링 된다.(static에 있는 파일임).Get요청 필요없음</p>
+<br>
+
+<p>컨트롤러를 통한 웹 요청을 처리 <span style="font-size:large;">MVC와 템플릿엔진</span></p>
+<p>2. <a href="/toHello">hello</a> 컨트롤러에서 템플릿 엔진 이용해서 페이지 렌더링된 html을 보여준다.+ 모델에 변수 담아서 보여줌 </p>
+<br>
+
+<p>3. *GetMapping 필요한 경우 Get요청으로 처리.(Post요청으로 안간다. ).& 주소창에서 name값을 주는 경우와 안 주는 경우.</p>
+<p>1). <a href="/hello-mvc?name=wow">name으로 wow 주는 경우</a> Get요청 처리 후 name을 받고 변수(name: wow) model에 name1으로 담아서 hello-template으로 이동한다</p>
+<p>2). <a href="/hello-mvc">neme 값 안 넣어서 null 되는 경우</a> Get요청 처리 후 변수(name: null)-> model에 name1으로 담는다(null값)  hello-template으로 이동한다.(name1 값이 null으로 나온다.)</p>
+<br>
+
+<p>4.인풋창 나옴 <a href="/hello-input">hello-input</a></p>
+<p> 인풋창이 나와서 입력 후 <code>PostMapping</code> (input작성 후 form을 submit한다. Post요청 처리-> hello-template 페이지로 이동)</p>
+<br>
+
+<p>5.<code>localhost:8080/hello-string?name=spring!!</code>
+<a href="/hello-string?name=spring!!">return 페이지 없이 그냥 텍스트(변수 name) 반환한다.</a></p>
+<pre>
+//단순 문자를 반환한다. http통신 프로토콜의 body에 문자 담아서 반환한다.
+@GetMapping("hello-string")
+@ResponseBody // 응답의 body에 직접 return하겠다.
+public String helloString(@RequestParam("name") String name){
+    return "hello" + name;
+}
+</pre>
+<br>
+<p>6. API</p>
+<p>@ResponseBoby사용해서 http컨버터를 이용해 json으로 바꿔서 반환해준다. view 없이 컨트롤러 메서드가 HTTP 응답의 본문을 직접 만들어 반환한다. http Response에 값을 넣어 반환한다.</p>
+<p><a href="/hello-api?name=spring!!">객체를 반환한다.</a></p>
+
+</body>
+</html>
