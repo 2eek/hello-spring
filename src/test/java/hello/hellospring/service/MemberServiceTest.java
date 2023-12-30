@@ -9,12 +9,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
+//메모리에서 테스트진행
 class MemberServiceTest {
 
     MemberService memberService;
     MemoryMemberRepository memberRepository;
 
+    //직접 객체 생성해서 넣었음
     @BeforeEach
     public void beforeEach(){
         memberRepository = new MemoryMemberRepository();
@@ -24,7 +25,7 @@ class MemberServiceTest {
 
     @AfterEach //test메서드 끝나고 호출 됨. =콜백메서드
     public void afterEach() {
-        //저장소를 지운다. 각 test가 서로 영향 안받는다. 서로 의존관계x
+        //저장소를 지운다. 각 test가 서로 영향 안받게 하기위해. 서로 의존관계x
         memberRepository.clearStore();
     }
 
@@ -69,4 +70,5 @@ class MemberServiceTest {
     @Test
     void findOne() {
     }
+
 }

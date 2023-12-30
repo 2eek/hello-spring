@@ -6,3 +6,5 @@ create table member
 );
 
 select * from member;
+delete from member;
+insert into member(name) values 'spring3';
