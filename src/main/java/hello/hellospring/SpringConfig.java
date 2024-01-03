@@ -47,7 +47,7 @@ public class SpringConfig {
     }
 
 
-    //MemberRepository: 인스턴스!!
+    //MemberRepository: 인스턴스!!!
     //MemoryMemberRepository(): 구현체
 //    @Bean
 //    public MemberRepository memberRepository(){
