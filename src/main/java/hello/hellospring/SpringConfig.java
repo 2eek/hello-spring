@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration//->스프링빈으로 관리해준다.
 public class SpringConfig {
-    // memberService를 스프링빈에 등록해준다.
+    // memberService를 스프링빈에 등록해준다.!!
 
 
 //    private  EntityManager em;
